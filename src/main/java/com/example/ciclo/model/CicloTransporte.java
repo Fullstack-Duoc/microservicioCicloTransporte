@@ -2,6 +2,9 @@ package com.example.ciclo.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,17 +12,41 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "ciclos_transporte")
 public class CicloTransporte {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "camion_id", nullable = false)
     private int camionId;
+
+    @Column(name = "pala_id", nullable = false)
     private int palaId;
+
+    @Column(name = "palero_id", nullable = false)
     private int paleroId;
-    private int materialId;
+
+    @Column(name = "material_id")
+    private Integer materialId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "destino")
     private Destino destino;
-    private double toneladasCargadas;
+
+    @Column(name = "toneladas_cargadas")
+    private Double toneladasCargadas;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado_ciclo", nullable = false)
     private EstadoCiclo estadoCiclo;
+
+    @Column(name = "fecha_hora_inicio")
     private LocalDateTime fechaHoraInicio;
+
+    @Column(name = "fecha_hora_fin")
     private LocalDateTime fechaHoraFin;
 
 }
