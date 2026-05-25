@@ -1,4 +1,4 @@
-package com.example.ciclo.model;
+package cl.duoc.mineria.cicloTransporte.model;
 
 public enum Destino {
     CHANCADOR,

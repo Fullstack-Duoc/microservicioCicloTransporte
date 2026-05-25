@@ -1,4 +1,4 @@
-package com.example.ciclo;
+package cl.duoc.mineria.cicloTransporte;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
