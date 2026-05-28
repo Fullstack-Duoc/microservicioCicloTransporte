@@ -71,6 +71,18 @@ public class GlobalExceptionHandler {
         return problem;
     }
 
+    @ExceptionHandler(CicloValidationException.class)
+    public ProblemDetail handleCicloValidation(CicloValidationException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+            HttpStatus.BAD_REQUEST,
+            ex.getMessage()
+        );
+
+        problem.setTitle("Iniciación de Ciclo Rechazada");
+        problem.setProperty("timestamp", Instant.now());
+        return problem;
+    }
+
     @ExceptionHandler(Exception.class)
     public ProblemDetail handleGeneralException(Exception ex) {
         System.out.println("🔴 EXCEPCIÓN NO CONTROLADA EN EL SISTEMA: " + ex.getClass().getName());
